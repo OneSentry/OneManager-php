@@ -23,7 +23,20 @@
 > ~~Click the button [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy) to Deploy a new app~~(`"We couldn't deploy your app because the source code violates the Salesforce Acceptable Use and External-Facing Services Policy."`)  
 >
 > Star this project, then Fork, create a app in Heroku, then turn to the Deploy tab, "Deployment method" via "Connect GitHub", select your github fork.   
-
+  配合cloudflare反代理，代码
+  新建 workder,并进行编辑
+  ```
+  addEventListener(
+  "fetch",event => {
+     let url=new URL(event.request.url);
+     url.hostname="xxx.herokuapp.com";  // "xxx"需要修改
+     let request=new Request(url,event.request);
+     event. respondWith(
+       fetch(request)
+     )
+  }
+)
+  ```
 ---
 
 # Deploy to Glitch  
